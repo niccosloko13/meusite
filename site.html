@@ -3,219 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkyBR Drones - Shows de Drones</title>
+  <title>SkyBR Drones - Site em Manutenção</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Estilos básicos */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* Configurações básicas */
     body {
-      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
       background-color: #000;
       color: #fff;
-      overflow-x: hidden;
-    }
-    h1, h2, h3 {
       font-family: 'Orbitron', sans-serif;
-      color: #00ffcc;
+      text-align: center;
+      overflow: hidden;
     }
-    a {
-      text-decoration: none;
-      color: #00ffcc;
-    }
+
+    /* Área de animação do título */
     .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px 0;
-    }
-
-    /* Cabeçalho com animação de entrada */
-    header {
-      text-align: center;
-      padding: 100px 0;
-      background: url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
       position: relative;
-      color: #fff;
-    }
-    header h1 {
-      font-size: 3em;
-      animation: fadeIn 1.5s ease-out forwards;
-    }
-    header p {
-      font-size: 1.5em;
-      margin-top: 10px;
-      opacity: 0;
-      animation: fadeIn 2s ease-out forwards;
-      animation-delay: 1s;
-    }
-    header button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 1em;
-      border: none;
-      background-color: #00ffcc;
-      color: #000;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      opacity: 0;
-      animation: fadeIn 2s ease-out forwards;
-      animation-delay: 1.5s;
-    }
-    header button:hover {
-      background-color: #00ccaa;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Seção Sobre */
-    #sobre {
-      padding: 60px 0;
-      text-align: center;
-      background: #111;
-    }
-    #sobre p {
-      font-size: 1.2em;
-      margin-top: 20px;
-      max-width: 800px;
-      margin: auto;
-      color: #aaa;
-    }
-
-    /* Galeria */
-    #galeria {
-      padding: 60px 0;
-      text-align: center;
-      background: #222;
-    }
-    #galeria .galeria-imagem {
-      width: 100%;
-      height: 200px;
-      background: #333;
-      margin: 10px;
-      display: inline-block;
-      transition: transform 0.3s;
-    }
-    #galeria .galeria-imagem:hover {
-      transform: scale(1.05);
-    }
-
-    /* FAQ */
-    #faq {
-      padding: 60px 0;
-      background: #111;
-    }
-    .faq-item {
-      margin-bottom: 20px;
-    }
-    .faq-item h3 {
-      cursor: pointer;
-      color: #00ffcc;
-    }
-    .faq-item p {
-      display: none;
-      color: #aaa;
-      margin-top: 10px;
-    }
-
-    /* Contato */
-    #contato {
-      padding: 60px 0;
-      text-align: center;
-      background: #222;
-    }
-    #contato form {
-      max-width: 600px;
-      margin: auto;
-    }
-    #contato input, #contato textarea, #contato button {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-    }
-    #contato input, #contato textarea {
-      background: #333;
-      color: #fff;
-    }
-    #contato button {
-      background-color: #00ffcc;
-      color: #000;
+    /* Efeito LED no título */
+    .drone-title {
+      font-size: 3.5em;
       font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    #contato button:hover {
-      background-color: #00ccaa;
+      color: #00ffcc;
+      letter-spacing: 8px;
+      opacity: 0;
+      position: relative;
+      text-shadow: 0 0 10px rgba(0, 255, 204, 0.8), 0 0 20px rgba(0, 255, 204, 0.6);
+      animation: fadeIn 1s forwards 4s;
     }
 
+    /* Animação de movimento dos LEDs */
+    .led {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      animation: moveToCenter 4s ease-out forwards;
+      opacity: 0.9;
+    }
+
+    /* Movimento do LED para formar um coração a partir das laterais */
+    @keyframes moveToCenter {
+      0% { opacity: 1; }
+      100% { transform: translate(0, 0); opacity: 0; }
+    }
+
+    /* Fade-in do título e das informações */
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Mensagem de manutenção */
+    h2 {
+      font-size: 1.8em;
+      color: #ccc;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeIn 1s forwards 5s;
+    }
+
+    /* Estilo do rodapé com o email e frase */
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      font-size: 1em;
+      color: #888;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-direction: column;
+      opacity: 0;
+      animation: fadeIn 1s forwards 5.5s;
+    }
+
+    footer p {
+      margin: 0;
+      color: #00ffcc;
+      font-size: 1.1em;
+      text-align: center;
+    }
+
+    footer a {
+      color: #00ffcc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-
-  <!-- Cabeçalho -->
-  <header>
-    <h1>SkyBR Drones</h1>
-    <p>Transformando o céu em um espetáculo de luzes</p>
-    <button>Solicitar Orçamento</button>
-  </header>
-
-  <!-- Seção Sobre -->
-  <section id="sobre" class="container">
-    <h2>Sobre Nós</h2>
-    <p>SkyBR Drones é pioneira em shows de drones, oferecendo uma experiência única de luzes e tecnologia para eventos. Nosso objetivo é transformar o céu em uma tela vibrante que encanta e surpreende o público.</p>
-  </section>
-
-  <!-- Galeria -->
-  <section id="galeria" class="container">
-    <h2>Nosso Portfólio</h2>
-    <div class="galeria-imagem" style="background-image: url('https://via.placeholder.com/200');"></div>
-    <div class="galeria-imagem" style="background-image: url('https://via.placeholder.com/200');"></div>
-    <div class="galeria-imagem" style="background-image: url('https://via.placeholder.com/200');"></div>
-    <div class="galeria-imagem" style="background-image: url('https://via.placeholder.com/200');"></div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="container">
-    <h2>Perguntas Frequentes</h2>
-    <div class="faq-item">
-      <h3>Como funciona um show de drones?</h3>
-      <p>Utilizamos tecnologia avançada para sincronizar múltiplos drones que criam padrões de luz no céu, transformando seu evento em algo inesquecível.</p>
+  <div class="container">
+    <div class="drone-title">
+      <span>SkyBR Drones</span>
     </div>
-    <div class="faq-item">
-      <h3>É seguro?</h3>
-      <p>Sim! Nossos drones são operados por profissionais treinados e seguem todas as regulamentações de segurança para garantir uma experiência segura.</p>
-    </div>
-  </section>
-
-  <!-- Contato -->
-  <section id="contato" class="container">
-    <h2>Contato</h2>
-    <form action="#" method="post">
-      <input type="text" name="nome" placeholder="Seu Nome" required>
-      <input type="email" name="email" placeholder="Seu Email" required>
-      <textarea name="mensagem" rows="4" placeholder="Sua Mensagem" required></textarea>
-      <button type="submit">Enviar Mensagem</button>
-    </form>
-  </section>
+    <h2>Site em Manutenção</h2>
+  </div>
+  <footer>
+    <p>Onde a tecnologia move o céu, e a emoção ilumina a noite.</p>
+    <p>Contato: <a href="mailto:nicollas@skybrdrones.com">nicollas@skybrdrones.com</a></p>
+  </footer>
 
   <script>
-    // Expansão de FAQ
-    const faqItems = document.querySelectorAll('.faq-item h3');
-    faqItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const p = item.nextElementSibling;
-        p.style.display = p.style.display === 'block' ? 'none' : 'block';
-      });
-    });
+    // Função para gerar LEDs que se movem em forma de coração a partir das laterais
+    const container = document.querySelector('.container');
+    const ledCount = 1000; // Configuração para 1000 LEDs
+
+    for (let i = 0; i < ledCount; i++) {
+      const led = document.createElement('div');
+      led.classList.add('led');
+      
+      // Alternando as cores entre azul, vermelho e amarelo
+      if (i % 3 === 0) {
+        led.style.backgroundColor = '#00ccff'; // Azul
+      } else if (i % 3 === 1) {
+        led.style.backgroundColor = '#ff3333'; // Vermelho
+      } else {
+        led.style.backgroundColor = '#ffcc00'; // Amarelo
+      }
+      
+      // Posição inicial nas laterais (esquerda ou direita) para o movimento de coração
+      const t = (i / ledCount) * Math.PI * 2;
+      const x = 16 * Math.sin(t) ** 3 * 15; // fator de escala
+      const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t)) * 15; // fator de escala
+
+      // Distribuindo LEDs nas laterais (alternando entre esquerda e direita)
+      if (i % 2 === 0) {
+        led.style.left = `-5vw`; // Lado esquerdo
+      } else {
+        led.style.left = `105vw`; // Lado direito
+      }
+      led.style.top = `calc(50% + ${y}px)`;
+      led.style.transform = `translate(${x}px, ${y}px)`; // Define o movimento para o coração
+      
+      container.appendChild(led);
+    }
   </script>
 </body>
 </html>
